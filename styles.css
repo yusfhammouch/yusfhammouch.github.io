@@ -42,7 +42,155 @@ button { font: inherit; }
 }
 
 .page-shell { overflow: clip; }
+.tools-section {
+  padding: 80px 0;
+  background:
+    radial-gradient(circle at top right, rgba(110, 99, 217, 0.16), transparent 20%),
+    linear-gradient(180deg, #07192d 0%, #061526 100%);
+  color: var(--ink-inverse);
+  overflow: hidden;
+}
 
+.tools-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tools-header .eyebrow {
+  color: rgba(243, 247, 252, 0.7);
+}
+
+.tools-header h2 {
+  color: white;
+}
+
+.tools-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.tools-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(10, 35, 64, 0.9);
+  border: 1px solid var(--line-soft);
+  padding: 10px 18px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(8px);
+  transform-origin: center;
+}
+
+.tool-item:hover {
+  transform: scale(1.08) translateY(-4px);
+  background: rgba(15, 47, 86, 0.95);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  z-index: 5;
+}
+
+.tool-item img {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.25s ease;
+}
+
+.tool-item:hover img {
+  transform: scale(1.15);
+}
+
+.tool-item:hover {
+  box-shadow: 
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(110, 99, 217, 0.35);
+}
+
+/* ===== TOOLS SECTION ===== */
+
+
+
+.tools-marquee {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible; /* 🔥 THIS FIXES THE CUT */
+  cursor: grab;
+  padding: 20px 0; /* gives breathing room */
+}
+
+.tools-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+
+
+
+
+
+/* ===== ANIMATION ===== */
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== APPLE-STYLE FADE ===== */
+
+.fade {
+  position: absolute;
+  top: 0;
+  width: 140px;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* LEFT FADE */
+.fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #07192d 30%,
+    rgba(7,25,45,0) 100%
+  );
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #07192d 30%,
+    rgba(7,25,45,0) 100%
+  );
+}
+
+/* OPTIONAL: blur effect (ultra premium) */
+.fade {
+  backdrop-filter: blur(6px);
+}
+
+.tools-marquee:hover .tools-track {
+  animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 .hero {
   position: relative;
   padding: 22px 0 72px;
@@ -61,6 +209,42 @@ button { font: inherit; }
   text-decoration: none;
   color: #0B0F0E;
   transition: all 0.2s ease;
+}
+
+.tools-used {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.tools-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tools-icons {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f8fa;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.tool img {
+  width: 18px;
+  height: 18px;
 }
 
 .lang-btn:hover {

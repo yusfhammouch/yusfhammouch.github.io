@@ -23,3 +23,34 @@ const observer = new IntersectionObserver((entries) => {
 for (const element of document.querySelectorAll('.reveal')) {
   observer.observe(element);
 }
+
+const marquee = document.querySelector('.tools-marquee');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+marquee.addEventListener('mousedown', (e) => {
+  isDown = true;
+  marquee.style.cursor = 'grabbing';
+  startX = e.pageX - marquee.offsetLeft;
+  scrollLeft = marquee.scrollLeft;
+});
+
+marquee.addEventListener('mouseleave', () => {
+  isDown = false;
+  marquee.style.cursor = 'grab';
+});
+
+marquee.addEventListener('mouseup', () => {
+  isDown = false;
+  marquee.style.cursor = 'grab';
+});
+
+marquee.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - marquee.offsetLeft;
+  const walk = (x - startX) * 2;
+  marquee.scrollLeft = scrollLeft - walk;
+});
